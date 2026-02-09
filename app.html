@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bauhaus Deck Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { margin-top: 20px; border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+<h1>Bauhaus Deck Calculator</h1>
+
+<form id="calculator-form">
+    <label for="length">Length (m):</label>
+    <input type="number" id="length" name="length" required>
+    <br>
+    <label for="width">Width (m):</label>
+    <input type="number" id="width" name="width" required>
+    <br>
+    <label for="direction">Direction:</label>
+    <select id="direction" name="direction" required>
+        <option value="horizontal">Horizontal</option>
+        <option value="vertical">Vertical</option>
+    </select>
+    <br>
+    <button type="button" onclick="calculate()">Calculate</button>
+</form>
+
+<table id="results-table" style="display:none;">
+    <tr>
+        <th>Description</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Area (m²)</td>
+        <td id="area-value"></td>
+    </tr>
+    <tr>
+        <td>Cost Estimate ($)</td>
+        <td id="cost-value"></td>
+    </tr>
+</table>
+
+<script>
+    function calculate() {
+        const length = parseFloat(document.getElementById("length").value);
+        const width = parseFloat(document.getElementById("width").value);
+        const area = length * width;
+
+        // Simple cost calculation: e.g., $10 per m²
+        const costEstimate = area * 10;
+
+        document.getElementById("area-value").innerText = area.toFixed(2);
+        document.getElementById("cost-value").innerText = costEstimate.toFixed(2);
+        document.getElementById("results-table").style.display = 'table';
+    }
+</script>
+
+</body>
+</html>
