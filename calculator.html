@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Deck Kalkylator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #calculator { margin: 20px; }
+        .output { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h1>Deck Kalkylator</h1>
+        <label for="length">Längd (m): </label>
+        <input type="number" id="length" placeholder="Längd"><br>
+
+        <label for="width">Bredd (m): </label>
+        <input type="number" id="width" placeholder="Bredd"><br>
+
+        <label for="costPerSquareMeter">Kostnad per kvm: </label>
+        <input type="number" id="costPerSquareMeter" placeholder="Kostnad per kvm"><br>
+
+        <button id="calculateBtn">Beräkna Kostnad</button>
+        
+        <div class="output" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('calculateBtn').onclick = function() {
+            var length = parseFloat(document.getElementById('length').value);
+            var width = parseFloat(document.getElementById('width').value);
+            var costPerSquareMeter = parseFloat(document.getElementById('costPerSquareMeter').value);
+            var area = length * width;
+            var totalCost = area * costPerSquareMeter;
+            document.getElementById('result').innerText = "Total Kostnad: " + totalCost.toFixed(2) + " SEK (kvm)";
+        };
+    </script>
+</body>
+</html>
